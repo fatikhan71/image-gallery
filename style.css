@@ -1,0 +1,406 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #10121a;
+    color: #f5f3ff;
+    min-height: 100vh;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 7%;
+    border-bottom: 1px solid #292b38;
+    background: #10121a;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+}
+
+.logo span,
+.hero h1 span {
+    color: #a970ff;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #d4d0e2;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #b783ff;
+}
+
+.hero {
+    text-align: center;
+    padding: 48px 20px 30px;
+}
+
+.hero h1 {
+    font-size: clamp(27px, 4vw, 39px);
+    font-weight: 500;
+}
+
+.hero p {
+    margin-top: 10px;
+    color: #aaaabd;
+    font-size: 14px;
+}
+
+.gallery-section {
+    max-width: 1500px;
+    margin: auto;
+    padding: 0 4.3% 60px;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.filter {
+    padding: 10px 25px;
+    border: 1px solid #303344;
+    border-radius: 30px;
+    background: #1d202c;
+    color: #d5d2e4;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+.filter:hover {
+    transform: translateY(-2px);
+    border-color: #a970ff;
+}
+
+.filter.active {
+    background: #a970ff;
+    color: white;
+    border-color: #a970ff;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 17px;
+}
+
+.gallery-item {
+    position: relative;
+    height: 210px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #202332;
+    cursor: pointer;
+    animation: appear 0.4s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.09);
+    filter: brightness(0.65);
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: rgba(12, 10, 24, 0.18);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.gallery-item:hover .overlay,
+.gallery-item:focus-within .overlay {
+    opacity: 1;
+}
+
+.overlay h3 {
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.view-btn {
+    padding: 8px 15px;
+    border: 1px solid #c7a4ff;
+    border-radius: 20px;
+    background: #a970ff;
+    color: white;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.gallery-item.hidden {
+    display: none;
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    padding: 50px 5%;
+    background: rgba(5, 6, 12, 0.96);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-content {
+    width: min(850px, 75vw);
+    max-height: 90vh;
+}
+
+.lightbox-content img {
+    display: block;
+    width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.image-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 14px;
+}
+
+.image-caption h2 {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.image-caption p {
+    color: #aaaabd;
+    font-size: 13px;
+}
+
+.close,
+.nav-btn {
+    display: grid;
+    place-items: center;
+    border: 1px solid #343646;
+    background: #1c1f2c;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.close:hover,
+.nav-btn:hover {
+    background: #a970ff;
+    transform: scale(1.08);
+}
+
+.close {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    font-size: 30px;
+}
+
+.nav-btn {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 17px;
+}
+
+footer {
+    padding: 25px 15px;
+    border-top: 1px solid #292b38;
+    text-align: center;
+    color: #aaaabd;
+    font-size: 12px;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 1400px) {
+    .gallery {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .gallery-item {
+        height: 190px;
+    }
+
+    .lightbox {
+        gap: 12px;
+        padding: 50px 3%;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        padding: 17px 5%;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    nav {
+        gap: 13px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 38px 15px 25px;
+    }
+
+    .hero p {
+        font-size: 12px;
+    }
+
+    .gallery-section {
+        padding: 0 15px 40px;
+    }
+
+    .filters {
+        gap: 8px;
+    }
+
+    .filter {
+        padding: 8px 14px;
+        font-size: 11px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .gallery-item {
+        height: 155px;
+    }
+
+    .overlay h3 {
+        font-size: 13px;
+    }
+
+    .view-btn {
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+
+    .lightbox {
+        gap: 8px;
+        padding: 60px 10px 25px;
+    }
+
+    .lightbox-content {
+        width: calc(100% - 72px);
+    }
+
+    .lightbox-content img {
+        max-height: 65vh;
+    }
+
+    .nav-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+
+    .close {
+        top: 15px;
+        right: 15px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .image-caption h2 {
+        font-size: 13px;
+    }
+
+    .image-caption p {
+        font-size: 11px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

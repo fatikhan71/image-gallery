@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelGallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <a href="#" class="logo">Pixel<span>Gallery</span></a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+    <main id="home">
+        <section class="hero">
+            <h1>Explore <span>Beautiful</span> Moments</h1>
+            <p>A collection of stunning images from around the world</p>
+        </section>
+
+        <section id="gallery" class="gallery-section">
+            <div class="filters">
+                <button class="filter active" data-category="all">All</button>
+                <button class="filter" data-category="nature">Nature</button>
+                <button class="filter" data-category="cities">Cities</button>
+                <button class="filter" data-category="animals">Animals</button>
+                <button class="filter" data-category="people">People</button>
+            </div>
+
+            <div class="gallery">
+                <div class="gallery-item" data-category="nature">
+                    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=85" alt="Beautiful green landscape">
+                    <div class="overlay"><h3>Nature Escape</h3><button class="view-btn">View Image ↗</button></div>
+                </div>
+
+                <div class="gallery-item" data-category="cities">
+                    <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=85" alt="City skyline">
+                    <div class="overlay"><h3>City Lights</h3><button class="view-btn">View Image ↗</button></div>
+                </div>
+
+                <div class="gallery-item" data-category="animals">
+                    <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=800&q=85" alt="Cute cat">
+                    <div class="overlay"><h3>Lovely Cat</h3><button class="view-btn">View Image ↗</button></div>
+                </div>
+
+                <div class="gallery-item" data-category="nature">
+                    <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=800&q=85" alt="Golden sunset">
+                    <div class="overlay"><h3>Golden Sunset</h3><button class="view-btn">View Image ↗</button></div>
+                </div>
+
+                <div class="gallery-item" data-category="nature">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=85" alt="Mountain peaks">
+                    <div class="overlay"><h3>Mountain View</h3><button class="view-btn">View Image ↗</button></div>
+                </div>
+
+                <div class="gallery-item" data-category="cities">
+                    <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=800&q=85" alt="Night city">
+                    <div class="overlay"><h3>Night Life</h3><button class="view-btn">View Image ↗</button></div>
+                </div>
+
+                <div class="gallery-item" data-category="nature">
+                    <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=85" alt="Pink flowers">
+                    <div class="overlay"><h3>Spring Flowers</h3><button class="view-btn">View Image ↗</button></div>
+                </div>
+
+                <div class="gallery-item" data-category="animals">
+                    <img src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?auto=format&fit=crop&w=800&q=85" alt="Colorful bird">
+                    <div class="overlay"><h3>Wild Beauty</h3><button class="view-btn">View Image ↗</button></div>
+                </div>
+
+                <div class="gallery-item" data-category="people">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85" alt="Portrait of a woman">
+                    <div class="overlay"><h3>Portrait</h3><button class="view-btn">View Image ↗</button></div>
+                </div>
+
+                <div class="gallery-item" data-category="nature">
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=85" alt="Lake and mountains">
+                    <div class="overlay"><h3>Mountain Lake</h3><button class="view-btn">View Image ↗</button></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
+        <button class="close" id="close" aria-label="Close image viewer">×</button>
+        <button class="nav-btn prev" id="prev" aria-label="Previous image">❮</button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <div class="image-caption">
+                <h2 id="image-title"></h2>
+                <p id="image-count"></p>
+            </div>
+        </div>
+        <button class="nav-btn next" id="next" aria-label="Next image">❯</button>
+    </div>
+
+    <footer id="about">
+        <p>© 2026 PixelGallery · Discover the beauty of every moment.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
